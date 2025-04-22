@@ -1,3 +1,70 @@
+import requests
+from bs4 import BeautifulSoup
+from urllib.parse import urljoin
+
+def parse_item(full_url):
+    visited = set()
+    dependencies = {}
+
+    BASE_URL = full_url.split("/w/")[0]
+
+    def fetch_page(relative_url):
+        full_url = urljoin(BASE_URL, relative_url)
+        response = requests.get(full_url, headers={
+            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
+            "AppleWebKit/537.36 (KHTML, like Gecko) "
+            "Chrome/123.0.0.0 Safari/537.36"})
+        response.raise_for_status()
+        return response.content
+
+    def recurse(relative_url):
+        if relative_url in visited:
+            return
+        visited.add(relative_url)
+
+        html = fetch_page(relative_url)
+        soup = BeautifulSoup(html, "html.parser")
+
+        item_name_tag = soup.find("h1")
+        if not item_name_tag:
+            return
+        item_name = item_name_tag.text.strip()
+        ingredients = []
+
+        table = soup.find("table", class_="wikitable")
+        if not table:
+            return
+
+        rows = table.find_all("tr")
+        parsing_materials = False
+
+        for row in rows:
+            headers = row.find_all("th")
+            if headers and "Material" in headers[0].text:
+                parsing_materials = True
+                continue
+            if parsing_materials:
+                cols = row.find_all("td")
+                if len(cols) < 2:
+                    break
+                link_tag = cols[0].find("a")
+                if not link_tag:
+                    continue
+                name = link_tag.get("title", "").strip()
+                href = link_tag.get("href", "").strip()
+                if name:
+                    ingredients.append(name)
+                if href and href.startswith("/w/"):
+                    recurse(href)
+
+        dependencies[item_name] = ingredients
+
+    # Start the recursion
+    start_path = full_url.split("/w/")[1]
+    recurse("/w/" + start_path)
+
+    return dependencies
+
 def generate_mermaid_with_links(components, title="Crafting Chart", wiki_base="https://dragonwilds.runescape.wiki/w/", chart_direction='BT'):
     """
     This function will generate HTML code with flowchart.
@@ -37,90 +104,10 @@ graph {chart_direction}""")
 </html>""")
     return "\n".join(html_string)
 
-import pandas as pd
-from io import StringIO
+# Example usage
+components = parse_item("https://dragonwilds.runescape.wiki/w/Chef%27s_Hat")
+print(generate_mermaid_with_links(components, '''Crafting Chart for "Chef's Hat"'''))
 
-def material_tables(data):
-    """
-    This function creats dict of items from all data_string strings, to be used in ''generate_mermaid_with_links'' function.
-    Open wiki, select material table starting from ''Material'' to end of table (output result item) anc copy as list element in data_string
-    """
-    all_components = {}
-    for crafting_item in data:
-        parts, name = crafting_item.strip().split('Output\tQuantity')
-        name = name.strip().split('\t')[0]
-        parts = pd.read_csv(StringIO(parts.strip()), sep='\t')
-        # print(f'"{name}":' + str(list(parts.iloc[:,0])))
-        all_components.update({name:list(parts.iloc[:,0])})
-    return all_components
-
-# Example with data strings for "Paladin's Platebody" ----------------------------------------------------------
-
-data_string = ['''
-Material	Quantity
-Iron Bar	12
-Hard Leather	8
-Padded Cloth	2
-Vault Shard	3
-Output	Quantity
-Paladin's Platebody	1
-''',
-'''
-Material	Quantity
-Iron Ore	3
-Output	Quantity
-Iron Bar	1
-''',
-'''
-Material	Quantity
-Leather	2
-Adhesive	1
-Output	Quantity
-Hard Leather	1
-''',
-'''
-Material	Quantity
-Animal Hide	1
-Output	Quantity
-Leather	1
-''',
-'''
-Material	Quantity
-Swamp Tar	1
-Output	Quantity
-Adhesive	1
-''',
-'''
-Material	Quantity
-Rough Cloth	
-Wool Cloth	1
-Output	Quantity
-Padded Cloth	1
-''',
-'''
-Material	Quantity
-Coarse Thread	3
-Output	Quantity
-Rough Cloth	1
-''',
-'''
-Material	Quantity
-Wool Thread	2
-Output	Quantity
-Wool Cloth	1
-''',
-'''
-Material	Quantity
-Fleece	1
-Output	Quantity
-Wool Thread	1
-''',
-'''
-Material	Quantity
-Flax	1
-Output	Quantity
-Coarse Thread	1
-''']
-
-components = material_tables(data_string)
-print(generate_mermaid_with_links(components))
+# Pretty print result
+#import pprint
+#pprint.pprint(components)
