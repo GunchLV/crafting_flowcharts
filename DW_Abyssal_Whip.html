@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script type="module">
+    import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+    mermaid.initialize({ startOnLoad: true });
+  </script>
+</head>
+<body>
+  <h2>Crafting flowchart</h2>
+<pre class="mermaid">
+graph BT
+  Whip[Abyssal Whip]
+  Core[Vault Core]
+  Shard[Vault Shard]
+  Horn[Ram Horn]
+  Hard_Leather[Hard Leather]
+  Abyssal_Spine[Abyssal Spine]
+  Dragonkin_Vault[Dragonkin Vault]
+  Ram[Rams]
+  Leather[Leather]
+  Adhesive[Adhesive]
+  a_hide[Animal Hide]
+  a_demon[Abyssal Demon]
+  s_tar[Swamp Tar]
+
+  Core --> Whip
+  Shard --> Whip
+  Horn --> Whip
+  Hard_Leather --> Whip
+  Abyssal_Spine --> Whip
+  Dragonkin_Vault --> Core
+  Dragonkin_Vault --> Shard
+  Ram --> Horn
+  Leather --> Hard_Leather
+  Adhesive --> Hard_Leather
+  a_hide-->Leather
+  a_demon-->Abyssal_Spine
+  s_tar-->Adhesive
+
+  click Core "https://dragonwilds.runescape.wiki/w/Vault_Core" _blank
+  click Shard "https://dragonwilds.runescape.wiki/w/Vault_Shard" _blank
+  click Horn "https://dragonwilds.runescape.wiki/w/Ram_Horn" _blank
+  click Hard_Leather "https://dragonwilds.runescape.wiki/w/Hard_Leather" _blank
+  click Abyssal_Spine "https://dragonwilds.runescape.wiki/w/Abyssal_Spine" _blank
+  click Dragonkin_Vault "https://dragonwilds.runescape.wiki/w/Dragonkin_Vault" _blank
+  click Ram "https://dragonwilds.runescape.wiki/w/Ram" _blank
+  click Leather "https://dragonwilds.runescape.wiki/w/Leather" _blank
+  click Adhesive "https://dragonwilds.runescape.wiki/w/Adhesive" _blank
+  click a_hide "https://dragonwilds.runescape.wiki/w/Animal_Hide" _blank
+  click a_demon "https://dragonwilds.runescape.wiki/w/Abyssal_Demon" _blank
+  click s_tar "https://dragonwilds.runescape.wiki/w/Swamp_Tar" _blank
+</pre>
+
+</body>
+</html>
