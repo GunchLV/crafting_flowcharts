@@ -12,3 +12,4 @@ Currently created flowcharts:
 * <a href="https://gunchlv.github.io/crafting_flowcharts/flowcharts/DW_Abyssal_Whip.html">Abyssal Whip</a>
 * <a href="https://gunchlv.github.io/crafting_flowcharts/flowcharts/DW_Granite_Maul.html">Granite Maul</a>
 * <a href="https://gunchlv.github.io/crafting_flowcharts/flowcharts/DW_Paladins_Platebody.html">Paladins Platebody</a>
+* <a href="https://gunchlv.github.io/crafting_flowcharts/flowcharts/DW_Staff_of_Light.html">Staff_of_Light</a>
