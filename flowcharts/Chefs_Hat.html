@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script type="module">
+    import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+    mermaid.initialize({ startOnLoad: true });
+  </script>
+</head>
+<body>
+  <h2>Crafting Chart for "Chef's Hat"</h2>
+<pre class="mermaid">
+graph BT
+  Wool_Cloth[Wool Cloth] --> Chef's_Hat[Chef's Hat]
+  Coarse_Thread[Coarse Thread] --> Chef's_Hat[Chef's Hat]
+  Wool_Thread[Wool Thread] --> Chef's_Hat[Chef's Hat]
+  Wool_Thread[Wool Thread] --> Wool_Cloth[Wool Cloth]
+  Flax[Flax] --> Coarse_Thread[Coarse Thread]
+  Fleece[Fleece] --> Wool_Thread[Wool Thread]
+
+  click Chef's_Hat "https://dragonwilds.runescape.wiki/w/Chef's_Hat" _blank
+  click Coarse_Thread "https://dragonwilds.runescape.wiki/w/Coarse_Thread" _blank
+  click Flax "https://dragonwilds.runescape.wiki/w/Flax" _blank
+  click Fleece "https://dragonwilds.runescape.wiki/w/Fleece" _blank
+  click Wool_Cloth "https://dragonwilds.runescape.wiki/w/Wool_Cloth" _blank
+  click Wool_Thread "https://dragonwilds.runescape.wiki/w/Wool_Thread" _blank
+</pre>
+</body>
+</html>
