@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script type="module">
+    import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+    mermaid.initialize({ startOnLoad: true });
+  </script>
+</head>
+<body>
+  <h2>Crafting Chart for "Dark Mage Robes"</h2>
+<pre class="mermaid">
+graph BT
+  Padded_Cloth[Padded Cloth] --> Dark_Mage_Robes[Dark Mage Robes]
+  Hard_Leather[Hard Leather] --> Dark_Mage_Robes[Dark Mage Robes]
+  Silver_Bar[Silver Bar] --> Dark_Mage_Robes[Dark Mage Robes]
+  Vault_Shard[Vault Shard] --> Dark_Mage_Robes[Dark Mage Robes]
+  Leather[Leather] --> Hard_Leather[Hard Leather]
+  Adhesive[Adhesive] --> Hard_Leather[Hard Leather]
+  Animal_Hide[Animal Hide] --> Leather[Leather]
+  Swamp_Tar[Swamp Tar] --> Adhesive[Adhesive]
+  Silver_Ore[Silver Ore] --> Silver_Bar[Silver Bar]
+  Coarse_Thread[Coarse Thread] --> Rough_Cloth[Rough Cloth]
+  Wool_Thread[Wool Thread] --> Wool_Cloth[Wool Cloth]
+  Flax[Flax] --> Coarse_Thread[Coarse Thread]
+  Fleece[Fleece] --> Wool_Thread[Wool Thread]
+  Rough_Cloth[Rough Cloth] --> Padded_Cloth[Padded Cloth]
+  Wool_Cloth[Wool Cloth] --> Padded_Cloth[Padded Cloth]
+  Dragonkin_Vaults[Dragonkin Vaults] --> Vault_Shard[Vault Shard]
+
+  click Adhesive "https://dragonwilds.runescape.wiki/w/Adhesive" _blank
+  click Animal_Hide "https://dragonwilds.runescape.wiki/w/Animal_Hide" _blank
+  click Coarse_Thread "https://dragonwilds.runescape.wiki/w/Coarse_Thread" _blank
+  click Dark_Mage_Robes "https://dragonwilds.runescape.wiki/w/Dark_Mage_Robes" _blank
+  click Dragonkin_Vaults "https://dragonwilds.runescape.wiki/w/Dragonkin_Vaults" _blank
+  click Flax "https://dragonwilds.runescape.wiki/w/Flax" _blank
+  click Fleece "https://dragonwilds.runescape.wiki/w/Fleece" _blank
+  click Hard_Leather "https://dragonwilds.runescape.wiki/w/Hard_Leather" _blank
+  click Leather "https://dragonwilds.runescape.wiki/w/Leather" _blank
+  click Padded_Cloth "https://dragonwilds.runescape.wiki/w/Padded_Cloth" _blank
+  click Rough_Cloth "https://dragonwilds.runescape.wiki/w/Rough_Cloth" _blank
+  click Silver_Bar "https://dragonwilds.runescape.wiki/w/Silver_Bar" _blank
+  click Silver_Ore "https://dragonwilds.runescape.wiki/w/Silver_Ore" _blank
+  click Swamp_Tar "https://dragonwilds.runescape.wiki/w/Swamp_Tar" _blank
+  click Vault_Shard "https://dragonwilds.runescape.wiki/w/Vault_Shard" _blank
+  click Wool_Cloth "https://dragonwilds.runescape.wiki/w/Wool_Cloth" _blank
+  click Wool_Thread "https://dragonwilds.runescape.wiki/w/Wool_Thread" _blank
+</pre>
+</body>
+</html>
