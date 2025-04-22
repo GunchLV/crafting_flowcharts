@@ -10,9 +10,10 @@ Future update ideas:
 
 Currently created flowcharts:
 * <a href="https://gunchlv.github.io/crafting_flowcharts/flowcharts/DW_Abyssal_Whip.html">Abyssal Whip</a>
-* <a href="https://gunchlv.github.io/crafting_flowcharts/flowcharts/Dark_Mage_Robes.html">Dark_Mage_Robes</a>
+* <a href="https://gunchlv.github.io/crafting_flowcharts/flowcharts/Chefs_Hat.html">Chef's Hat</a>
+* <a href="https://gunchlv.github.io/crafting_flowcharts/flowcharts/Dark_Mage_Robes.html">Dark Mage Robes</a>
 * <a href="https://gunchlv.github.io/crafting_flowcharts/flowcharts/DW_Granite_Maul.html">Granite Maul</a>
 * <a href="https://gunchlv.github.io/crafting_flowcharts/flowcharts/DW_Paladins_Platebody.html">Paladins Platebody</a>
-* <a href="https://gunchlv.github.io/crafting_flowcharts/flowcharts/DW_Staff_of_Light.html">Staff_of_Light</a>
-* <a href="https://gunchlv.github.io/crafting_flowcharts/flowcharts/Studded_Leather_Body.html">Studded_Leather_Body</a>
+* <a href="https://gunchlv.github.io/crafting_flowcharts/flowcharts/DW_Staff_of_Light.html">Staff of Light</a>
+* <a href="https://gunchlv.github.io/crafting_flowcharts/flowcharts/Studded_Leather_Body.html">Studded Leather Body</a>
 
