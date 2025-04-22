@@ -23,14 +23,14 @@ graph {chart_direction}""")
     for output, inputs in components.items():
         for input_item in inputs:
             # Connection
-            html_string.append(f"  {input_item}[{input_item.replace('_', ' ')}] --> {output}[{output.replace('_', ' ')}]")
+            html_string.append(f"  {input_item.replace(' ', '_').replace('-', '_')}[{input_item}] --> {output.replace(' ', '_').replace('-', '_')}[{output}]")
             nodes.update([input_item, output])
     html_string.append("") # just empty line between chart and links
     
     # Create click links
     for node in sorted(nodes):
         link = f"{wiki_base}{node}"
-        html_string.append(f'  click {node} "{link}" _blank')
+        html_string.append(f"""  click {node.replace(' ', '_').replace('-', '_')} "{link.replace(' ', '_').replace('-', '_')}" _blank""")
         
     # Add end part
     html_string.append("""</pre>
@@ -42,14 +42,15 @@ graph {chart_direction}""")
 Ant it can be tested with this example
 ```
 components = {
-    "Whip": ["Vault_Core", "Vault_Shard", "Horn", "Hard_Leather", "Abyssal_Spine"],
-    "Vault_Core": ["Dragonkin_Vault"],
-    "Vault_Shard": ["Dragonkin_Vault"],
-    "Horn": ["Ram"],
-    "Hard_Leather": ["Leather", "Adhesive"],
-    "Leather": ["Animal_Hide"],
-    "Adhesive": ["Swamp_Tar"],
-    "Abyssal_Spine": ["Abyssal_Demon"]
+    "Granite Maul": ["Imbued Granite Maul Head", "Ornate Maul Handle", "Imbued Leather Wrappings", "Vault Shard", "Vault Core"],
+    "Imbued Granite Maul Head": ["Granite", "Wild Anima", "Vault Shard"],
+    "Wild Anima": ["Anima-Infused Bark"],
+    "Vault Shard": ["Dragonkin Vault"],
+    "Ornate Maul Handle": ["Blightwood","Silver Bar","Bronze Bar","Vault Shard"],
+    "Silver Bar": ["Silver Ore"],
+    "Bronze Bar": ["Copper Ore","Tin Ore"],
+    "Imbued Leather Wrappings": ["Dire Wolf Leather", "Anima-Infused Bark","Vault Shard"],
+    "Dire Wolf Leather": ["Dire Wolf Hide"]
 }
 
 print(generate_mermaid_with_links(components))
