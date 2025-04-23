@@ -20,12 +20,8 @@ By the way... all component nodes in chart have wiki links, so you can click on 
 ![Image](https://github.com/user-attachments/assets/57dcb42c-205c-4e7c-92f5-a6abd525ee51)
 
 
-Future update ideas:
-* Standalone .exe file
-* Count materials and display numbers next to chart elements
-* Less manual work gatherig data...
 
-Currently created flowcharts:
+## Example flowcharts:
 RS Dragonwilds
 * <a href="https://gunchlv.github.io/crafting_flowcharts/flowcharts/Abyssal_Whip.html">Abyssal Whip</a>
 * <a href="https://gunchlv.github.io/crafting_flowcharts/flowcharts/Chefs_Hat.html">Chef's Hat</a>
@@ -37,4 +33,9 @@ RS Dragonwilds
 
 RS3
 * <a href="https://gunchlv.github.io/crafting_flowcharts/flowcharts/Pineapple pizza.html">Pineapple pizza</a>
+
+## Future update ideas:
+* Standalone .exe file
+* Count materials and display numbers next to chart elements
+* Less manual work gatherig data...
 
