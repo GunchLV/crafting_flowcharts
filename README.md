@@ -1,4 +1,4 @@
-Python function to generate HTML code is in generate_html.py file
+Python function to generate flowchart is in <a href="https://gunchlv.github.io/crafting_flowcharts/generate_html.py">generate_html.py</a> file
 
 ## How to use it?
 Run .py file then copy url from wiki page of item you want and click "Generate".<br/>
