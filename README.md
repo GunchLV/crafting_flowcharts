@@ -14,7 +14,7 @@ look for "Mat...<br/>
 
 ## Output?
 When it looks up all materials and make a html for chart, it will save .html in directory you run .py file and open it in your default web browser.<br/>
-You can also uncheck those checkbozes to not show result when it is done or not save file.<br/>
+You can also uncheck those checkboxes to not show result when it is done or not save .html file.<br/>
 
 By the way... all component nodes in chart have wiki links, so you can click on them!<br/>
 ![Image](https://github.com/user-attachments/assets/57dcb42c-205c-4e7c-92f5-a6abd525ee51)
