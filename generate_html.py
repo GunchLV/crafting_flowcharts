@@ -1,12 +1,16 @@
 import requests
 from bs4 import BeautifulSoup
 from urllib.parse import urljoin
+import webbrowser
+import os
+import time
 
 def parse_item(full_url):
     visited = set()
     dependencies = {}
 
     BASE_URL = full_url.split("/w/")[0]
+    final_product_name = full_url.split('/')[-1].replace("_"," ").replace("%27","'")
 
     def fetch_page(relative_url):
         full_url = urljoin(BASE_URL, relative_url)
@@ -63,9 +67,9 @@ def parse_item(full_url):
     start_path = full_url.split("/w/")[1]
     recurse("/w/" + start_path)
 
-    return dependencies
+    return dependencies, final_product_name
 
-def generate_mermaid_with_links(components, title="Crafting Chart", wiki_base="https://dragonwilds.runescape.wiki/w/", chart_direction='BT'):
+def generate_html_code(components, title="Crafting Chart", wiki_base="https://dragonwilds.runescape.wiki/w/", chart_direction='BT'):
     """
     This function will generate HTML code with flowchart.
     To get components data use ''material_tables'' function
@@ -102,12 +106,28 @@ graph {chart_direction}""")
     html_string.append("""</pre>
 </body>
 </html>""")
+    # return dict of recipe ingredients and item name from web adress end part
     return "\n".join(html_string)
 
+def generate_html_file(html_content, show_result=True, keep_file=True):
+    
+    # Save HTML content to a file
+    file_path = f"""{item_name.replace(" ", "_").replace("-", "_").replace("'", "")}.html"""
+    with open(file_path, "w") as f:
+        f.write(html_content)
+    
+    if show_result==True: # Open the file in the default web browser
+        webbrowser.open('file://' + os.path.realpath(file_path))
+    
+    # Wait a little while to ensure the browser has enough time to load the page
+    time.sleep(2)
+    
+    if keep_file==False: # Delete the file after the page is opened
+        if os.path.exists(file_path):
+            os.remove(file_path)
+            
 # Example usage
-components = parse_item("https://dragonwilds.runescape.wiki/w/Chef%27s_Hat")
-print(generate_mermaid_with_links(components, '''Crafting Chart for "Chef's Hat"'''))
+components, item_name = parse_item("https://dragonwilds.runescape.wiki/w/Chef%27s_Hat") # paste a full link of finished item here
+html_code = generate_html_code(components, f'''Crafting Chart for "{item_name}"''')
+generate_html_file(html_code, show_result=True, keep_file=True)
 
-# Pretty print result
-#import pprint
-#pprint.pprint(components)
