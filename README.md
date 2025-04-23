@@ -9,7 +9,7 @@ It works on OSRS, RS3 and Dragonwilds wiki pages.<br/>
 Script will look for "Materials" table (if there is any) and click all ingredient links to...<br/>
 look for "Materials" table (if there is any) and click all ingredient links to...<br/>
 look for "Materials" table (if there is any) and click all ingredient links to...<br/>
-...<br/>
+look for "Mat...<br/>
 ![Image](https://github.com/user-attachments/assets/d1c2ceba-b4d8-4834-901c-a74847364899)
 
 ## Output?
