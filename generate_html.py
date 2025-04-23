@@ -4,13 +4,14 @@ from urllib.parse import urljoin
 import webbrowser
 import os
 import time
+import tkinter as tk
+from tkinter import messagebox
 
-def parse_item(full_url):
+def scrape_item_components(full_url):
     visited = set()
     dependencies = {}
 
     BASE_URL = full_url.split("/w/")[0]
-    final_product_name = full_url.split('/')[-1].replace("_"," ").replace("%27","'")
 
     def fetch_page(relative_url):
         full_url = urljoin(BASE_URL, relative_url)
@@ -67,7 +68,7 @@ def parse_item(full_url):
     start_path = full_url.split("/w/")[1]
     recurse("/w/" + start_path)
 
-    return dependencies, final_product_name
+    return dependencies
 
 def generate_html_code(components, title="Crafting Chart", wiki_base="https://dragonwilds.runescape.wiki/w/", chart_direction='BT'):
     """
@@ -89,18 +90,21 @@ graph {chart_direction}""")
     
     nodes = set()
     links = []
+    
+    def str_replace(text): # to fix problems that would crash html part
+        return text.replace(' ', '_').replace('-', '_').replace('(', '').replace(')', '')
 
     for output, inputs in components.items():
         for input_item in inputs:
             # Connection
-            html_string.append(f"  {input_item.replace(' ', '_').replace('-', '_')}[{input_item}] --> {output.replace(' ', '_').replace('-', '_')}[{output}]")
+            html_string.append(f"  {str_replace(input_item)}[{input_item.replace('(', '').replace(')', '')}] --> {str_replace(output)}[{output.replace('(', '').replace(')', '')}]")
             nodes.update([input_item, output])
     html_string.append("") # just empty line between chart and links
     
     # Create click links
     for node in sorted(nodes):
         link = f"{wiki_base}{node}"
-        html_string.append(f"""  click {node.replace(' ', '_').replace('-', '_')} "{link.replace(' ', '_').replace('-', '_')}" _blank""")
+        html_string.append(f"""  click {str_replace(node)} "{str_replace(link)}" _blank""")
         
     # Add end part
     html_string.append("""</pre>
@@ -109,10 +113,10 @@ graph {chart_direction}""")
     # return dict of recipe ingredients and item name from web adress end part
     return "\n".join(html_string)
 
-def generate_html_file(html_content, show_result=True, keep_file=True):
+def generate_html_file(html_content, item_name, show_result=True, generate_html_file=True):
     
     # Save HTML content to a file
-    file_path = f"""{item_name.replace(" ", "_").replace("-", "_").replace("'", "")}.html"""
+    file_path = f"""{item_name}.html"""
     with open(file_path, "w") as f:
         f.write(html_content)
     
@@ -122,12 +126,46 @@ def generate_html_file(html_content, show_result=True, keep_file=True):
     # Wait a little while to ensure the browser has enough time to load the page
     time.sleep(2)
     
-    if keep_file==False: # Delete the file after the page is opened
+    if generate_html_file==False: # Delete the file after the page is opened
         if os.path.exists(file_path):
             os.remove(file_path)
-            
-# Example usage
-components, item_name = parse_item("https://dragonwilds.runescape.wiki/w/Chef%27s_Hat") # paste a full link of finished item here
-html_code = generate_html_code(components, f'''Crafting Chart for "{item_name}"''')
-generate_html_file(html_code, show_result=True, keep_file=True)
 
+# GUI setup
+def main():
+    root = tk.Tk()
+    root.title("Crafting Flowchart Generator")
+
+    # URL entry
+    tk.Label(root, text="Enter URL:").grid(row=0, column=0, padx=10, pady=10, sticky='e')
+    url_entry = tk.Entry(root, width=60)
+    url_entry.grid(row=0, column=1, padx=10, pady=10)
+
+    # Checkboxes
+    show_result_var = tk.BooleanVar(value=True)
+    gen_html_file_var = tk.BooleanVar(value=True)
+
+    show_result_cb = tk.Checkbutton(root, text="Show result", variable=show_result_var)
+    show_result_cb.grid(row=1, column=0, padx=10, sticky='w')
+
+    gen_html_file_cb = tk.Checkbutton(root, text="Generate .html file", variable=gen_html_file_var)
+    gen_html_file_cb.grid(row=1, column=1, padx=10, sticky='w')
+
+    # Generate button
+    def on_generate():
+        full_url = url_entry.get()
+        if not full_url:
+            messagebox.showerror("Error", "Please enter a URL.")
+            return
+        final_product_name = full_url.split('/')[-1].replace("_"," ").replace("%27","'")
+        wiki_base = full_url.split('/w/')[0]+"/w/"
+        components = scrape_item_components(full_url)
+        html_code = generate_html_code(components, f'''Crafting Chart for "{final_product_name}"''', wiki_base=wiki_base)
+        generate_html_file(html_code, final_product_name, show_result=show_result_var.get(), generate_html_file=gen_html_file_var.get())
+
+    generate_btn = tk.Button(root, text="Generate", command=on_generate)
+    generate_btn.grid(row=2, column=0, columnspan=2, pady=15)
+
+    root.mainloop()
+
+if __name__ == "__main__":
+    main()
