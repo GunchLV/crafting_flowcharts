@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script type="module">
+    import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+    mermaid.initialize({ startOnLoad: true });
+  </script>
+</head>
+<body>
+  <h2>Crafting Chart for "Pineapple pizza"</h2>
+<pre class="mermaid">
+graph BT
+  Soft_clay[Soft clay] --> Pot_unfired[Pot unfired]
+  Pot_unfired[Pot unfired] --> Empty_pot[Empty pot]
+  Wheat[Wheat] --> Pot_of_flour[Pot of flour]
+  Empty_pot[Empty pot] --> Pot_of_flour[Pot of flour]
+  Jug[Jug] --> Jug_of_water[Jug of water]
+  Pot_of_flour[Pot of flour] --> Pizza_base[Pizza base]
+  Jug_of_water[Jug of water] --> Pizza_base[Pizza base]
+  Pizza_base[Pizza base] --> Incomplete_pizza[Incomplete pizza]
+  Tomato[Tomato] --> Incomplete_pizza[Incomplete pizza]
+  Bucket[Bucket] --> Bucket_of_milk[Bucket of milk]
+  Bucket_of_milk[Bucket of milk] --> Cheese_wheel[Cheese wheel]
+  Cheese_wheel[Cheese wheel] --> Cheese[Cheese]
+  Incomplete_pizza[Incomplete pizza] --> Uncooked_pizza[Uncooked pizza]
+  Cheese[Cheese] --> Uncooked_pizza[Uncooked pizza]
+  Uncooked_pizza[Uncooked pizza] --> Plain_pizza[Plain pizza]
+  Pineapple[Pineapple] --> Pineapple_ring[Pineapple ring]
+  Plain_pizza[Plain pizza] --> Pineapple_pizza[Pineapple pizza]
+  Pineapple_ring[Pineapple ring] --> Pineapple_pizza[Pineapple pizza]
+
+  click Bucket "https://runescape.wiki/w/Bucket" _blank
+  click Bucket_of_milk "https://runescape.wiki/w/Bucket_of_milk" _blank
+  click Cheese "https://runescape.wiki/w/Cheese" _blank
+  click Cheese_wheel "https://runescape.wiki/w/Cheese_wheel" _blank
+  click Empty_pot "https://runescape.wiki/w/Empty_pot" _blank
+  click Incomplete_pizza "https://runescape.wiki/w/Incomplete_pizza" _blank
+  click Jug "https://runescape.wiki/w/Jug" _blank
+  click Jug_of_water "https://runescape.wiki/w/Jug_of_water" _blank
+  click Pineapple "https://runescape.wiki/w/Pineapple" _blank
+  click Pineapple_pizza "https://runescape.wiki/w/Pineapple_pizza" _blank
+  click Pineapple_ring "https://runescape.wiki/w/Pineapple_ring" _blank
+  click Pizza_base "https://runescape.wiki/w/Pizza_base" _blank
+  click Plain_pizza "https://runescape.wiki/w/Plain_pizza" _blank
+  click Pot_unfired "https://runescape.wiki/w/Pot_unfired" _blank
+  click Pot_of_flour "https://runescape.wiki/w/Pot_of_flour" _blank
+  click Soft_clay "https://runescape.wiki/w/Soft_clay" _blank
+  click Tomato "https://runescape.wiki/w/Tomato" _blank
+  click Uncooked_pizza "https://runescape.wiki/w/Uncooked_pizza" _blank
+  click Wheat "https://runescape.wiki/w/Wheat" _blank
+</pre>
+</body>
+</html>
