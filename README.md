@@ -1,4 +1,5 @@
-Python function to generate flowchart is in <a href="https://gunchlv.github.io/crafting_flowcharts/generate_html.py">generate_html.py</a> file
+Windows .exe file for downloading --> <a href="https://gunchlv.github.io/crafting_flowcharts/Crafting Flowcharts.exe">Crafting Flowcharts.exe</a> file
+Python script to generate flowchart is in <a href="https://gunchlv.github.io/crafting_flowcharts/generate_html.py">generate_html.py</a> file
 
 ## How to use it?
 Run .py file then copy url from wiki page of item you want and click "Generate".<br/>
