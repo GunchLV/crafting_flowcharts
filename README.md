@@ -36,7 +36,7 @@ RS3
 * <a href="https://gunchlv.github.io/crafting_flowcharts/flowcharts/Pineapple pizza.html">Pineapple pizza</a>
 
 ## Future update ideas:
-* Standalone .exe file
+* Standalone .exe file ✅
 * Count materials and display numbers next to chart elements
 * Less manual work gatherig data...
 
