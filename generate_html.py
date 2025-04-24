@@ -70,7 +70,7 @@ def scrape_item_components(full_url):
 
     return dependencies
 
-def generate_html_code(components, title="Crafting Chart", wiki_base="https://dragonwilds.runescape.wiki/w/", chart_direction='BT'):
+def generate_html_code(components, title="Crafting Chart", wiki_base="https://dragonwilds.runescape.wiki/w/", chart_direction="BT", node_colour="#e7e7e7"):
     """
     This function will generate HTML code with flowchart.
     To get components data use ''material_tables'' function
@@ -105,6 +105,10 @@ graph {chart_direction}""")
     for node in sorted(nodes):
         link = f"{wiki_base}{node}"
         html_string.append(f"""  click {str_replace(node)} "{str_replace(link)}" _blank""")
+    
+    # Custom html color code for nodes
+    for node in sorted(nodes):
+        html_string.append(f"""  style {str_replace(node)} fill:{node_colour} """)
         
     # Add end part
     html_string.append("""</pre>
@@ -129,26 +133,38 @@ def generate_html_file(html_content, item_name, show_result=True, generate_html_
     if generate_html_file==False: # Delete the file after the page is opened
         if os.path.exists(file_path):
             os.remove(file_path)
+            
 
 # GUI setup
 def main():
+
     root = tk.Tk()
     root.title("Crafting Flowchart Generator")
-
+    
     # URL entry
     tk.Label(root, text="Enter URL:").grid(row=0, column=0, padx=10, pady=10, sticky='e')
     url_entry = tk.Entry(root, width=60)
-    url_entry.grid(row=0, column=1, padx=10, pady=10)
-
+    url_entry.grid(row=0, column=1, padx=10, pady=10, columnspan=3, sticky='w')
+    
+    # Create a frame for the options row
+    options_frame = tk.Frame(root)
+    options_frame.grid(row=1, column=0, columnspan=4, padx=10, pady=5, sticky='w')
+    
     # Checkboxes
     show_result_var = tk.BooleanVar(value=True)
     gen_html_file_var = tk.BooleanVar(value=True)
-
-    show_result_cb = tk.Checkbutton(root, text="Show result", variable=show_result_var)
-    show_result_cb.grid(row=1, column=0, padx=10, sticky='w')
-
-    gen_html_file_cb = tk.Checkbutton(root, text="Generate .html file", variable=gen_html_file_var)
-    gen_html_file_cb.grid(row=1, column=1, padx=10, sticky='w')
+    
+    show_result_cb = tk.Checkbutton(options_frame, text="Show result", variable=show_result_var)
+    show_result_cb.pack(side='left', padx=5)
+    
+    gen_html_file_cb = tk.Checkbutton(options_frame, text="Generate .html file", variable=gen_html_file_var)
+    gen_html_file_cb.pack(side='left', padx=5)
+    
+    # Node colour input
+    tk.Label(options_frame, text="Node colour:").pack(side='left', padx=5)
+    node_colour_entry = tk.Entry(options_frame, width=20)
+    node_colour_entry.pack(side='left', padx=5)
+    node_colour_entry.insert(0, "#e7e7e7") # Default node colour
 
     # Generate button
     def on_generate():
@@ -159,11 +175,11 @@ def main():
         final_product_name = full_url.split('/')[-1].replace("_"," ").replace("%27","'")
         wiki_base = full_url.split('/w/')[0]+"/w/"
         components = scrape_item_components(full_url)
-        html_code = generate_html_code(components, f'''Crafting Chart for "{final_product_name}"''', wiki_base=wiki_base)
+        html_code = generate_html_code(components, f'''Crafting Chart for "{final_product_name}"''', wiki_base=wiki_base, node_colour=node_colour_entry.get())
         generate_html_file(html_code, final_product_name, show_result=show_result_var.get(), generate_html_file=gen_html_file_var.get())
 
     generate_btn = tk.Button(root, text="Generate", command=on_generate)
-    generate_btn.grid(row=2, column=0, columnspan=2, pady=15)
+    generate_btn.grid(row=2, column=1, columnspan=2, pady=15)
 
     root.mainloop()
 
