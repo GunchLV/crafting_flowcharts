@@ -1,4 +1,4 @@
-Windows .exe file for downloading --> <a href="https://gunchlv.github.io/crafting_flowcharts/Crafting Flowcharts.exe">Crafting Flowcharts.exe</a> file
+Windows .exe file for downloading --> <a href="https://gunchlv.github.io/crafting_flowcharts/Crafting Flowcharts.exe">Crafting Flowcharts.exe</a> file<br/>
 Python script to generate flowchart is in <a href="https://gunchlv.github.io/crafting_flowcharts/generate_html.py">generate_html.py</a> file
 
 ## How to use it?
