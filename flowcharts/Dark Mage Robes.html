@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script type="module">
+    import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+    mermaid.initialize({ startOnLoad: true });
+  </script>
+</head>
+<body>
+  <h2></h2>
+<pre class="mermaid">
+graph BT
+  Padded_Cloth[Padded Cloth x8] --> Dark_Mage_Robes[Dark Mage Robes]
+  Hard_Leather[Hard Leather x8] --> Dark_Mage_Robes[Dark Mage Robes]
+  Silver_Bar[Silver Bar x4] --> Dark_Mage_Robes[Dark Mage Robes]
+  Vault_Shard[Vault Shard x3] --> Dark_Mage_Robes[Dark Mage Robes]
+  Rough_Cloth[Rough Cloth x8] --> Padded_Cloth[Padded Cloth x8]
+  Wool_Cloth[Wool Cloth x8] --> Padded_Cloth[Padded Cloth x8]
+  Coarse_Thread[Coarse Thread x3] --> Rough_Cloth[Rough Cloth x8]
+  Flax[Flax x3] --> Coarse_Thread[Coarse Thread x3]
+  Wool_Thread[Wool Thread x2] --> Wool_Cloth[Wool Cloth x8]
+  Fleece[Fleece x2] --> Wool_Thread[Wool Thread x2]
+  Leather[Leather x16] --> Hard_Leather[Hard Leather x8]
+  Adhesive[Adhesive x8] --> Hard_Leather[Hard Leather x8]
+  Animal_Hide[Animal Hide x2] --> Leather[Leather x16]
+  Swamp_Tar[Swamp Tar x1] --> Adhesive[Adhesive x8]
+  Silver_Ore[Silver Ore x12] --> Silver_Bar[Silver Bar x4]
+
+  click Adhesive "https://dragonwilds.runescape.wiki/w/Adhesive" _blank
+  click Animal_Hide "https://dragonwilds.runescape.wiki/w/Animal_Hide" _blank
+  click Coarse_Thread "https://dragonwilds.runescape.wiki/w/Coarse_Thread" _blank
+  click Dark_Mage_Robes "https://dragonwilds.runescape.wiki/w/Dark_Mage_Robes" _blank
+  click Flax "https://dragonwilds.runescape.wiki/w/Flax" _blank
+  click Fleece "https://dragonwilds.runescape.wiki/w/Fleece" _blank
+  click Hard_Leather "https://dragonwilds.runescape.wiki/w/Hard_Leather" _blank
+  click Leather "https://dragonwilds.runescape.wiki/w/Leather" _blank
+  click Padded_Cloth "https://dragonwilds.runescape.wiki/w/Padded_Cloth" _blank
+  click Rough_Cloth "https://dragonwilds.runescape.wiki/w/Rough_Cloth" _blank
+  click Silver_Bar "https://dragonwilds.runescape.wiki/w/Silver_Bar" _blank
+  click Silver_Ore "https://dragonwilds.runescape.wiki/w/Silver_Ore" _blank
+  click Swamp_Tar "https://dragonwilds.runescape.wiki/w/Swamp_Tar" _blank
+  click Vault_Shard "https://dragonwilds.runescape.wiki/w/Vault_Shard" _blank
+  click Wool_Cloth "https://dragonwilds.runescape.wiki/w/Wool_Cloth" _blank
+  click Wool_Thread "https://dragonwilds.runescape.wiki/w/Wool_Thread" _blank
+
+  style Adhesive fill:#e7e7e7 
+  style Animal_Hide fill:#e7e7e7 
+  style Coarse_Thread fill:#e7e7e7 
+  style Dark_Mage_Robes fill:#e7e7e7 
+  style Flax fill:#e7e7e7 
+  style Fleece fill:#e7e7e7 
+  style Hard_Leather fill:#e7e7e7 
+  style Leather fill:#e7e7e7 
+  style Padded_Cloth fill:#e7e7e7 
+  style Rough_Cloth fill:#e7e7e7 
+  style Silver_Bar fill:#e7e7e7 
+  style Silver_Ore fill:#e7e7e7 
+  style Swamp_Tar fill:#e7e7e7 
+  style Vault_Shard fill:#e7e7e7 
+  style Wool_Cloth fill:#e7e7e7 
+  style Wool_Thread fill:#e7e7e7 
+</pre>
+</body>
+</html>

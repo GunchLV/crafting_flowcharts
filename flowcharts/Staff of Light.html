@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script type="module">
+    import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+    mermaid.initialize({ startOnLoad: true });
+  </script>
+</head>
+<body>
+  <h2></h2>
+<pre class="mermaid">
+graph BT
+  Blightwood[Blightwood x16] --> Staff_of_Light[Staff of Light]
+  Wild_Anima[Wild Anima x8] --> Staff_of_Light[Staff of Light]
+  Sapphire[Sapphire x4] --> Staff_of_Light[Staff of Light]
+  Vault_Shard[Vault Shard x12] --> Staff_of_Light[Staff of Light]
+  Vault_Core[Vault Core x1] --> Staff_of_Light[Staff of Light]
+  Anima_Infused_Bark[Anima-Infused Bark x32] --> Wild_Anima[Wild Anima x8]
+
+  click Anima_Infused_Bark "https://dragonwilds.runescape.wiki/w/Anima_Infused_Bark" _blank
+  click Blightwood "https://dragonwilds.runescape.wiki/w/Blightwood" _blank
+  click Sapphire "https://dragonwilds.runescape.wiki/w/Sapphire" _blank
+  click Staff_of_Light "https://dragonwilds.runescape.wiki/w/Staff_of_Light" _blank
+  click Vault_Core "https://dragonwilds.runescape.wiki/w/Vault_Core" _blank
+  click Vault_Shard "https://dragonwilds.runescape.wiki/w/Vault_Shard" _blank
+  click Wild_Anima "https://dragonwilds.runescape.wiki/w/Wild_Anima" _blank
+
+  style Anima_Infused_Bark fill:#e7e7e7 
+  style Blightwood fill:#e7e7e7 
+  style Sapphire fill:#e7e7e7 
+  style Staff_of_Light fill:#e7e7e7 
+  style Vault_Core fill:#e7e7e7 
+  style Vault_Shard fill:#e7e7e7 
+  style Wild_Anima fill:#e7e7e7 
+</pre>
+</body>
+</html>

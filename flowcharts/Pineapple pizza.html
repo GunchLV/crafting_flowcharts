@@ -7,27 +7,27 @@
   </script>
 </head>
 <body>
-  <h2>Crafting Chart for "Pineapple pizza"</h2>
+  <h2></h2>
 <pre class="mermaid">
 graph BT
-  Soft_clay[Soft clay] --> Pot_unfired[Pot unfired]
-  Pot_unfired[Pot unfired] --> Empty_pot[Empty pot]
-  Wheat[Wheat] --> Pot_of_flour[Pot of flour]
-  Empty_pot[Empty pot] --> Pot_of_flour[Pot of flour]
-  Jug[Jug] --> Jug_of_water[Jug of water]
-  Pot_of_flour[Pot of flour] --> Pizza_base[Pizza base]
-  Jug_of_water[Jug of water] --> Pizza_base[Pizza base]
-  Pizza_base[Pizza base] --> Incomplete_pizza[Incomplete pizza]
-  Tomato[Tomato] --> Incomplete_pizza[Incomplete pizza]
-  Bucket[Bucket] --> Bucket_of_milk[Bucket of milk]
-  Bucket_of_milk[Bucket of milk] --> Cheese_wheel[Cheese wheel]
-  Cheese_wheel[Cheese wheel] --> Cheese[Cheese]
-  Incomplete_pizza[Incomplete pizza] --> Uncooked_pizza[Uncooked pizza]
-  Cheese[Cheese] --> Uncooked_pizza[Uncooked pizza]
-  Uncooked_pizza[Uncooked pizza] --> Plain_pizza[Plain pizza]
-  Pineapple[Pineapple] --> Pineapple_ring[Pineapple ring]
-  Plain_pizza[Plain pizza] --> Pineapple_pizza[Pineapple pizza]
-  Pineapple_ring[Pineapple ring] --> Pineapple_pizza[Pineapple pizza]
+  Plain_pizza[Plain pizza x1] --> Pineapple_pizza[Pineapple pizza]
+  Pineapple_ring[Pineapple ring x1] --> Pineapple_pizza[Pineapple pizza]
+  Uncooked_pizza[Uncooked pizza x1] --> Plain_pizza[Plain pizza x1]
+  Incomplete_pizza[Incomplete pizza x1] --> Uncooked_pizza[Uncooked pizza x1]
+  Cheese[Cheese x1] --> Uncooked_pizza[Uncooked pizza x1]
+  Pizza_base[Pizza base x1] --> Incomplete_pizza[Incomplete pizza x1]
+  Tomato[Tomato x1] --> Incomplete_pizza[Incomplete pizza x1]
+  Pot_of_flour[Pot of flour x1] --> Pizza_base[Pizza base x1]
+  Jug_of_water[Jug of water x1] --> Pizza_base[Pizza base x1]
+  Wheat[Wheat x1] --> Pot_of_flour[Pot of flour x1]
+  Empty_pot[Empty pot x1] --> Pot_of_flour[Pot of flour x1]
+  Pot_unfired[Pot unfired] --> Empty_pot[Empty pot x1]
+  Soft_clay[Soft clay x1] --> Pot_unfired[Pot unfired]
+  Jug[Jug x1] --> Jug_of_water[Jug of water x1]
+  Cheese_wheel[Cheese wheel x1] --> Cheese[Cheese x1]
+  Bucket_of_milk[Bucket of milk x1] --> Cheese_wheel[Cheese wheel x1]
+  Bucket[Bucket x1] --> Bucket_of_milk[Bucket of milk x1]
+  Pineapple[Pineapple x1] --> Pineapple_ring[Pineapple ring x1]
 
   click Bucket "https://runescape.wiki/w/Bucket" _blank
   click Bucket_of_milk "https://runescape.wiki/w/Bucket_of_milk" _blank
@@ -48,6 +48,26 @@ graph BT
   click Tomato "https://runescape.wiki/w/Tomato" _blank
   click Uncooked_pizza "https://runescape.wiki/w/Uncooked_pizza" _blank
   click Wheat "https://runescape.wiki/w/Wheat" _blank
+
+  style Bucket fill:#e7e7e7 
+  style Bucket_of_milk fill:#e7e7e7 
+  style Cheese fill:#e7e7e7 
+  style Cheese_wheel fill:#e7e7e7 
+  style Empty_pot fill:#e7e7e7 
+  style Incomplete_pizza fill:#e7e7e7 
+  style Jug fill:#e7e7e7 
+  style Jug_of_water fill:#e7e7e7 
+  style Pineapple fill:#e7e7e7 
+  style Pineapple_pizza fill:#e7e7e7 
+  style Pineapple_ring fill:#e7e7e7 
+  style Pizza_base fill:#e7e7e7 
+  style Plain_pizza fill:#e7e7e7 
+  style Pot_unfired fill:#e7e7e7 
+  style Pot_of_flour fill:#e7e7e7 
+  style Soft_clay fill:#e7e7e7 
+  style Tomato fill:#e7e7e7 
+  style Uncooked_pizza fill:#e7e7e7 
+  style Wheat fill:#e7e7e7 
 </pre>
 </body>
 </html>
