@@ -4,7 +4,7 @@ Python script to generate flowchart is in <a href="https://gunchlv.github.io/cra
 ## How to use it?
 Run .py file then copy url from wiki page of item you want and click "Generate".<br/>
 It works on OSRS, RS3 and Dragonwilds wiki pages.<br/>
-![Image](https://github.com/user-attachments/assets/799a8af7-c529-4e15-bcf6-eb6d19330078)
+![Image](https://github.com/user-attachments/assets/201d765a-ef01-4f2b-91a3-d8604b249769)
 
 ## How it works?
 Script will look for "Materials" table (if there is any) and click all ingredient links to...<br/>
@@ -18,7 +18,7 @@ When it looks up all materials and make a html for chart, it will save .html in 
 You can also uncheck those checkboxes to not show result when it is done or not save .html file.<br/>
 
 By the way... all component nodes in chart have wiki links, so you can click on them!<br/>
-![Image](https://github.com/user-attachments/assets/57dcb42c-205c-4e7c-92f5-a6abd525ee51)
+![Image](https://github.com/user-attachments/assets/ceee523d-0e4b-45e9-85e9-04eaf8f6d209)
 
 
 
