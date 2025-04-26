@@ -42,6 +42,6 @@ RS3
 
 ## Future update ideas:
 * Standalone .exe file ✅
-* Count materials and display numbers next to chart elements
+* Count materials and display numbers next to chart elements✅
 * Less manual work gatherig data...
 
