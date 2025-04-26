@@ -6,7 +6,6 @@ import os
 import time
 import tkinter as tk
 from tkinter import messagebox
-import pandas as pd
 from collections import defaultdict
 
 def scrape_item_components(full_url):
@@ -101,30 +100,35 @@ graph {chart_direction}""")
     def str_replace(text): # to fix problems that would crash html part
         return text.replace(' ', '_').replace('-', '_').replace('(', '').replace(')', '')
     
-    df = pd.DataFrame()
+    # Initialize
+    rows = []
+    nodes = set()
+    
     for output, inputs in components.items():
-        for input_item in inputs:
+        for input_item, count in inputs.items():
             # Connection
             html_string.append(f"  {str_replace(input_item)}[{input_item.replace('(', '').replace(')', '')}] --> {str_replace(output)}[{output.replace('(', '').replace(')', '')}]")
             nodes.update([input_item, output])
-            
-            # Component counts table
-            df_part = pd.DataFrame(inputs.items())
-            df_part['output'] = output
-            df=pd.concat([df, df_part], ignore_index=True)
-    html_string.append("") # just empty line
-    df.columns = ['input', 'count', 'output']
     
-    # calculate totatals for components based on use in other components
-    for r in range(0, len(df)):
-        if df.iloc[r,2] in df['input'].to_list():
-            df.iloc[r,1] = df.iloc[r,1] * df.iloc[df[df['input']==df.iloc[r,2]].index[0],1]
+            # Save component counts
+            rows.append({'input': input_item, 'count': count, 'output': output})
     
+    html_string.append("")  # just empty line for nicer HTML
+    
+    # First, create a lookup: input -> count
+    input_count_lookup = {row['input']: row['count'] for row in rows}
+    
+    # Now adjust counts based on compoenet count in other componenets
+    for row in rows:
+        output_name = row['output']
+        if output_name in input_count_lookup:
+            row['count'] *= input_count_lookup[output_name]
+
     # Create click links
     for node in sorted(nodes):
         link = f"{wiki_base}{node}"
         html_string.append(f"""  click {str_replace(node)} "{str_replace(link)}" _blank""")
-    html_string.append("") # just empty line
+    html_string.append("") # just empty line for nicer HTML
     
     # Custom html color code for nodes
     for node in sorted(nodes):
@@ -137,8 +141,8 @@ graph {chart_direction}""")
     
     html_string = "\n".join(html_string)
     
-    for r in range(0, len(df)): # replace component names with name and count
-        html_string = html_string.replace(f"[{df.iloc[r,0]}]", f"[{df.iloc[r,0]} x{df.iloc[r,1]}]")
+    for row in rows:  
+        html_string = html_string.replace(f"[{row['input']}]", f"[{row['input']} x{row['count']}]")
     return html_string # return HTML code
 
 def generate_html_file(html_content, item_name, show_result=True, generate_html_file=True):
