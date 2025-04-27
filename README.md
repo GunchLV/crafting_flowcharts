@@ -1,4 +1,5 @@
 Windows .exe file for downloading ---> <a href="https://gunchlv.github.io/crafting_flowcharts/Crafting Flowcharts.exe">Crafting Flowcharts.exe</a> <---<br/>
+.exe file was simply created from .py file by using <a href="https://pypi.org/project/auto-py-to-exe/"> auto-py-to-exe</a> so there is possibility thet some antiviruse counts it as a viruss :/<br/>
 Python script to generate flowchart is in <a href="https://gunchlv.github.io/crafting_flowcharts/generate_html.py">generate_html.py</a> file
 
 ## How to use it?
