@@ -1,5 +1,4 @@
 Windows .exe file for downloading ---> <a href="https://gunchlv.github.io/crafting_flowcharts/Crafting Flowcharts.exe">Crafting Flowcharts.exe</a> <---<br/>
-.exe file was simply created from .py file by using <a href="https://pypi.org/project/auto-py-to-exe/"> auto-py-to-exe</a> so there is possibility thet some antiviruse counts it as a viruss :/<br/>
 Python script to generate flowchart is in <a href="https://gunchlv.github.io/crafting_flowcharts/generate_html.py">generate_html.py</a> file
 
 ## How to use it?
@@ -15,7 +14,7 @@ look for "Mat...<br/>
 ![Image](https://github.com/user-attachments/assets/d1c2ceba-b4d8-4834-901c-a74847364899)
 
 ## Output?
-When it looks up all materials and make a html for chart, it will save .html in directory you run .py file and open it in your default web browser.<br/>
+When it looks up all materials and make a html for chart, it will save .html in directory you run .exe file and open it in your default web browser.<br/>
 Nodes will have <ins>count of total</ins> coponents needed for finished final product.<br/>
 You can also play with options:
 * Don't open file in web browsen whn it is created
@@ -45,4 +44,7 @@ RS3
 * Standalone .exe file ✅
 * Count materials and display numbers next to chart elements✅
 * Less manual work gatherig data...
+
+<br/><br/>
+.exe file was simply created from .py file by using <a href="https://pypi.org/project/auto-py-to-exe/"> auto-py-to-exe</a> so there is possibility thet some antivirus software flags it as false positive :/<br/>
 
